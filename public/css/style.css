@@ -1,0 +1,382 @@
+/*Minimalistic styling sheet to create basic site theme*/
+
+#masthead{
+	
+	/*position:fixed;*/
+	
+}
+
+ul#main-nav {
+	text-align: middle;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #b4c7e7;
+}
+
+ul#main-nav>li {
+	display: inline-block;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #3EACA8;
+}
+
+#main-title{
+	
+	text-align: center;
+	text-decoration: underline;
+	color: #5A5050;
+	
+}
+
+#reg-title{color: #5A5050}
+
+div.text-section{
+	
+	padding-top:10px;
+	padding-left:10%;
+	padding-Right:10%;
+	
+}
+
+table{
+
+	width: 100%;
+	border: 1px solid;
+	border-radius: 10px;
+
+}
+
+th{
+
+	background-color: #5A5050;
+	color: white;
+	border-radius: 10px;
+	
+}
+
+tr{
+	
+	text-align:center;
+	
+}
+
+#main-container{
+
+	width:970px;
+
+}
+
+#Congrats{
+	
+	text-align: center;
+	color: #5A5050;
+	size: 30px;
+	
+}
+
+.Numero{
+
+	width:120px;
+
+}
+
+input.MyButton{
+	
+	border-color:#3EACA8;
+	background-color: #3EACA8;
+	color: white;
+	
+}
+
+h1#Welcome{
+	
+	text-align:center;
+	font-family: calibri;
+	font-size: 36pt;
+	color:#5A5050;
+	
+}
+
+div.outer-container{
+	
+	width:90%;
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:middle;
+	
+}
+
+div.inner-container{
+	
+	position:relative;
+	padding:15px;
+	margin:0 auto;
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	border-color:#b4c7e7;
+	text-align:center;
+	width:375px;
+	height:667px;
+	
+}
+
+h3{
+	
+	background-color: #b4c7e7;
+	color:white;
+	
+}
+
+h3.footer{
+	
+	color: #b4c7e7;
+	
+}
+
+h4{
+	
+	margin:0;
+	padding-bottom:5pt;
+	text-align:center;
+	font-family: calibri;
+	font-size: 16pt;
+	color:#5A5050;
+	
+}
+
+img.img-container{
+
+   max-width:90%;
+   max-height:90%;
+
+}
+
+p{
+	
+	text-align:left;
+	
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+input.LoginCred{
+	
+	background-color: #ededed;
+	padding-left: 5px;
+	
+}
+
+input.LoginSubmit{
+	
+	background-color: #b4c7e7;
+	border: 1;
+	border-color: black;
+	width: 175px;
+	height: 25px;
+	
+}
+
+h2{
+	
+	text-align:center;
+	font-family: calibri;
+	font-size: 22pt;
+	
+}
+
+div.ParentDiv{
+	
+	text-align:center;
+
+}
+
+div.ChildDiv{
+	
+	vertical-align:middle;
+	display:inline-block;
+	padding-right: 2pt;
+	height:100%;
+}
+
+div.myHeader{
+	
+	display:flex;
+	justify-content:space-between;
+	
+}
+
+img#AvatarImg{
+	
+	vertical-align:middle;
+	
+}
+
+div#ProfileName{
+	
+	vertical-align:bottom;
+	width:100%;
+	
+}
+
+h1#myName{
+
+	text-align:center;
+	font-family: calibri;
+	font-size: 42pt;
+	color:#5A5050;
+	
+}
+
+div.AnsText{
+
+	display:inline-block;
+	width: 98%;
+	height: 70px;
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	border-color:#b4c7e7;
+	text-align:center;
+	padding-bottom:2px;
+	
+}
+
+div#FooterDiv{
+	
+	position:absolute;
+	bottom:0;
+}
+
+p#registerlink{
+
+	text-align:center;
+	font-family: calibri;
+	font-size: 12pt;
+	color:#5A5050;
+	
+}
+
+input#iFName{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+
+input#iLName{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+
+input#iGender{
+	
+	width: 25%;
+	background-color: #ededed;
+	
+}
+
+input#iAge{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 20pt;
+	
+}
+
+input#iUName{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+input#iPassword{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+
+input#iEmail{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+
+input#iZipCode{
+	
+	padding-left: 5px;
+	background-color: #ededed;
+	width: 25%;
+	
+}
+
+div.spacer{
+	
+	display:inline-block;
+	width:10px;
+	
+}
+
+input.qLong{
+	
+	display:inline-block;
+	width: 98%;
+	height: 100pt;
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	border-color:#b4c7e7;
+	text-align:center;
+	
+}
+

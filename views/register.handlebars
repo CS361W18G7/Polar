@@ -1,0 +1,126 @@
+<div class="outer-container">
+
+	<div class="inner-container">
+
+		<h1 id="Welcome">REGISTRATION</h1>
+
+			<form method="post">
+
+				<h3>USER INFO</h3>
+
+					<input required type="text" id="iFName" name="sFirstName" placeholder="First name" value =""><div class="spacer"></div>
+					<input required type="text" id="iLName" name="sLastName" placeholder="Last name" value="" class="Numero"><div class="spacer"></div>
+					<input required type="text" id="iAge" placeholder="Age" name="sAge" value=""><br><br>
+					<select id="iGender" name="sGender">
+						<option value="" disabled selected>Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select><div class="spacer"></div>
+					<input required type="text" id="iUName" name="sUserName" placeholder="User name" value="" class="Numero"><div class="spacer"></div>
+					<input required type="text" id="iPassword" name="sPassword" placeholder="Password" value="" class="Numero"><br><br>
+					<input required type="text" id="iEmail" name="sEmail" placeholder="Email" value="" class="Numero"><div class="spacer"></div>
+					<input required type="text" id="iZipCode" name="sZipCode" placeholder="Zip Code" value="" class="Numero">
+					<br><br>
+					
+					<div class="ParentDiv">
+					
+						<div class="ChildDiv">
+					
+							<img src="img/1Icon.png"><br>
+							<input type="radio" name="sIcon" value="1">
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/2Icon.png"><br>
+							<input type="radio" name="sIcon" value="2">
+					
+						</div>
+						
+						<div class="ChildDiv">
+					
+							<img src="img/3Icon.png"><br>
+							<input type="radio" name="sIcon" value="3">
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/4Icon.png"><br>
+							<input type="radio" name="sIcon" value="4">
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/5Icon.png"><br>
+							<input type="radio" name="sIcon" value="5">
+					
+						</div>
+						
+						<div class="ChildDiv">
+					
+							<img src="img/6Icon.png"><br>
+							<input type="radio" name="sIcon" value="6">
+					
+						</div>
+					
+					</div>
+					
+				<h3>QUESTIONS</h3>
+				
+					<h4>What causes are you passionate about?</h4>
+				
+						{{#if QuesMult}}
+						
+							<select id="iMultiSelect1" name="MultiSelect1">
+								
+								<option value="" disable selected></option>
+								
+								{{#each QuesMult}}
+								
+									<option value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+								{{/each}}
+						
+							</select>
+							
+							<div class="spacer"></div>
+							
+							<select id="iMultiSelect2" name="MultiSelect2">
+						
+								<option value="" disable selected></option>
+						
+								{{#each QuesMult}}
+								
+									<option value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+								{{/each}}
+						
+							</select>
+						
+						{{/if}}
+					
+					<br><br>
+					
+					{{#if QuesLong}}
+					
+						{{#each QuesLong}}
+					
+							<h4>{{this.QuestText}}</h4>
+							<input type="hidden" name="LongQues" value="{{this.QuestID}}">
+					
+						{{/each}}
+					
+						<textarea required name="LongAns" cols="49" rows="4"></textarea>
+					
+					{{/if}}
+					
+				<br>
+				<input class="LoginSubmit" type="submit" name="RegisterUser" value="Submit">
+
+			</form>
+	</div>
+</div>

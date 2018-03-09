@@ -1,0 +1,55 @@
+<div class="outer-container">
+
+	<div class="inner-container">
+	
+		{{#each user}}
+	
+			<div class="myHeader">
+				
+				<img id="AvatarImg" src="img/{{this.Avatar}}.png">
+					
+				<div id="ProfileName"><h1 id="myName">{{this.FirstName}}</h1></div>
+			
+			</div>
+			
+			<h2>You care about...</h2>
+			
+			<hr>
+		
+		{{/each}}
+		
+		{{#each MultSelect}}	
+		
+		<div class="ParentDiv">
+		
+			<div class="ChildDiv">
+			
+				<img src="img/Check.png">
+			
+			</div>
+			
+			<div class="ChildDiv">
+			
+				<h2>{{this.QuestText}}</h2>
+				
+			</div>
+			
+		</div>
+		
+		{{/each}}
+		
+		{{#each LongAnswer}}
+		
+			<h2>{{this.QuestText}}</h2>
+			
+			<div class="AnsText">
+			
+				{{this.QuestAnswer}}
+			
+			</div>
+		
+		{{/each}}
+		
+	</div>
+	
+</div>
