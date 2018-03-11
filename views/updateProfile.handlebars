@@ -1,0 +1,129 @@
+<div class="outer-container">
+
+	<div class="inner-container">
+
+		<!--<img src="img/PolarBear.jpg">-->
+		
+	<h1 id="Update">Edit Profile</h1>
+	{{#each user}}
+				<form id="updateprofile" action="/{{UserID}}" method="post">
+
+				<h3>USER INFO</h3>
+
+					<input required type="text" id="iFName" name="fname" placeholder="First name" value ="{{FirstName}}"><div class="spacer"></div>
+					<input required type="text" id="iLName" name="lname" placeholder="Last name" value="{{LastName}}" class="Numero"><div class="spacer"></div>
+					<input required type="text" id="iAge" placeholder="Age" name="age" value="{{Age}}"><br><br>
+					<input required type="text" id="iEmail" name="email" placeholder="Email" value="{{Email}}" class="Numero"><div class="spacer"></div>
+					<input required type="text" id="iZipCode" name="GeoArea" placeholder="Zip Code" value="{{GeoArea}}" class="Numero">
+					<br><br>
+					
+					<div class="ParentDiv">
+					
+						<div class="ChildDiv">
+					
+							<img src="img/1Icon.png"><br>
+							<input type="radio" name="sIcon" value="1" required>
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/2Icon.png"><br>
+							<input type="radio" name="sIcon" value="2">
+					
+						</div>
+						
+						<div class="ChildDiv">
+					
+							<img src="img/3Icon.png"><br>
+							<input type="radio" name="sIcon" value="3">
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/4Icon.png"><br>
+							<input type="radio" name="sIcon" value="4">
+					
+						</div>
+					
+						<div class="ChildDiv">
+					
+							<img src="img/5Icon.png"><br>
+							<input type="radio" name="sIcon" value="5">
+					
+						</div>
+						
+						<div class="ChildDiv">
+					
+							<img src="img/6Icon.png"><br>
+							<input type="radio" name="sIcon" value="6">
+					
+						</div>
+					
+					</div>
+	{{/each}}
+				<h3>QUESTIONS</h3>
+				
+					<h4>What causes are you passionate about?</h4>
+				
+						{{#if QuesMult}}
+						
+							<select id="iMultiSelect1" name="MultiSelect1" required>
+								
+								<option value="" disable selected></option>
+								
+								{{#each QuesMult}}
+								
+									<option name="MultItem1" value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+								{{/each}}
+						
+							</select>
+							
+							<div class="spacer"></div>
+							
+							<select id="iMultiSelect2" name="MultiSelect2" required>
+						
+								<option value="" disable selected></option>
+						
+								{{#each QuesMult}}
+								
+									<option name="MultItem2" value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+								{{/each}}
+						
+							</select>
+						
+						{{/if}}
+					
+					<br><br>
+					
+					{{#if LongAnswer}}
+					
+						{{#each LongAnswer}}
+					
+							<h4>{{QuestText}}</h4>
+							<input type="hidden" name="LongQues" value="{{this.QuestID}}">
+							
+							<textarea required name="QuestAnswer" cols="49" rows="4">{{QuestAnswer}}</textarea>
+						{{/each}}
+					
+
+					
+					{{/if}}
+					
+				<br>
+				<input class="LoginSubmit" type="submit" name="RegisterUser" value="Save">
+
+			</form>
+		
+	</div>
+	
+</div>
+
+
+
+				
+
+

@@ -1,0 +1,67 @@
+
+		<form id="updateprofile" action="/{{UserID}}" method="post">
+				First Name: <input type="text" name="fname" value="{{FirstName}}" required><br><br>
+				Last Name: <input type="text" name="lname" value="{{LastName}}" required><br><br>
+				Age: <input type="number" name="age" value="{{Age}}" required><br><br>
+				Gender: <select name="gender">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+				</select><br><br>
+				GeoArea: <input type="text" name="GeoArea" value="{{GeoArea}}" required><br><br>
+				Email: <input type="email" name="email" value="{{Email}}" required><br><br>
+		{{/each}}
+
+				<br><br><br>
+				{{#each LongAnswer}}
+				<h4>{{QuestText}}:</h4> <br><br>
+				<input type="text" name="question" value="{{QuestAnswer}}" required><br><br>
+				{{/each}}
+			
+
+				<h4>What causes are you passionate about?</h4>
+				
+				{{#if QuesMult}}
+
+					<select id="iMultiSelect1" name="MultiSelect1">
+
+						<option value="" disable selected></option>
+
+						{{#each QuesMult}}
+
+							<option value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+						{{/each}}
+
+					</select>
+
+					<div class="spacer"></div>
+
+					<select id="iMultiSelect2" name="MultiSelect2">
+
+						<option value="" disable selected></option>
+
+						{{#each QuesMult}}
+
+							<option value="{{this.QuestID}}">{{this.QuestText}}</option>
+
+						{{/each}}
+
+					</select>
+
+				{{/if}}
+
+			<br><br>
+
+
+			<input type="submit" value="Save">
+		</form>		
+
+
+
+
+
+
+
+							sql = 'UPDATE UserProfile SET QuestAnswer=? WHERE UserID=? AND QuestAnswer IS NOT NULL';
+
+							parameters = [req.body.QuestAnswer, req.params.id];

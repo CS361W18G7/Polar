@@ -57,7 +57,6 @@ app.get('/register',function(req,res,next){
 					}else{
 			
 						context.QuesLong = rows
-						console.log(context);
 						res.render('register',context);
 					}
 				
@@ -107,7 +106,6 @@ app.post('/',function(req,res){
 						}
 					
 							context.LongAnswer = rows;
-							console.log(context);
 							res.render('profile',context);
 					
 					});
@@ -166,7 +164,6 @@ app.post('/register',function(req,res){
 						}
 			
 						context.fName = req.body.sFirstName;
-						console.log("Register Success");
 						res.render('confirmation',context);
 				
 					});
@@ -180,6 +177,156 @@ app.post('/register',function(req,res){
 	}
 	
 });
+
+// Routes to the update page and appends the userID as a get request
+app.get('/:id', function(req,res,next) {
+
+	var context = {};
+	//var mysql = req.app.get('mysql');
+	
+	mysql.pool.query('SELECT UserID, FirstName, LastName, Gender, Age, GeoArea, Email FROM User WHERE UserID=?', [req.params.id] ,function(err, rows, fields){
+		if(err){
+			console.log(err);
+			return;
+		}
+		context.user = rows;
+		
+		
+		mysql.pool.query("SELECT `QuestText` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NULL",[req.params.id],function(err, rows, fields){
+
+		if(err){
+			//next(err);
+			console.log(err);
+			return;
+		}
+
+		context.MultSelect = rows;
+
+		mysql.pool.query("SELECT `QuestText`, `QuestAnswer` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NOT NULL",[req.params.id],function(err, rows, fields){
+
+		if(err){
+			//next(err);
+			console.log(err);
+			return;
+		}
+
+			context.LongAnswer = rows;
+			
+			mysql.pool.query("SELECT `QuestID`,`QuestText` FROM Questions WHERE Type=? AND Status=?",[`Multi-Select`,`Active`],function(err, rows, fields){
+			
+			if(err){
+				//next(err);
+				console.log(err);
+				return;
+			}else if(rows.length > 0){
+			
+				context.QuesMult = rows
+				
+				mysql.pool.query("SELECT `QuestText`, `QuestAnswer` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NOT NULL",[req.params.id],function(err, rows, fields){
+
+						if(err){
+							//next(err);
+							console.log(err);
+							return;
+						}
+					
+							context.LongAnswer = rows;
+							res.render('updateProfile',context);
+					});
+				}});
+			});		
+		});
+	});
+});
+
+// Updates the user information and appends the userID
+app.post('/:id', function(req,res) {
+	var context = {};
+	
+	var sql = 'UPDATE User SET FirstName=?, LastName=?, Gender=?, Age=?, GeoArea=?, Email=?, Avatar=? WHERE UserID=?';
+	var parameters = [req.body.fname, req.body.lname, req.body.gender, req.body.age, req.body.GeoArea, req.body.email, req.body.sIcon, req.params.id];
+	
+	mysql.pool.query(sql,parameters,function(error, results, fields){
+		if(error){
+			console.log("error");
+			res.write(JSON.stringify(error));
+			res.end();
+		}else{
+		
+			sql = 'UPDATE UserProfile SET QuestAnswer=? WHERE UserID=? AND QuestAnswer IS NOT NULL';
+
+			parameters = [req.body.QuestAnswer, req.params.id];
+						
+			mysql.pool.query(sql,parameters,function(error, results, fields){
+			if(error){
+				console.log("error");
+				res.write(JSON.stringify(error));
+				res.end();
+			}else{
+				// Start here
+				sql = 'DELETE FROM UserProfile WHERE UserID=? AND QuestAnswer IS NULL'
+				parameters = [req.params.id];
+				mysql.pool.query(sql,parameters,function(error, results, fields){
+				if(error){
+					console.log("error");
+					res.write(JSON.stringify(error));
+					res.end();
+				}else{
+					console.log("update working");
+					console.log(req.body.MultiSelect1);
+
+					sql = 'INSERT INTO UserProfile (UserID, QuestID) VALUES ?';
+					parameters = [[req.params.id, req.body.MultiSelect1 ], [req.params.id, req.body.MultiSelect2]];
+				
+				mysql.pool.query(sql,[parameters],function(error, results, fields){
+				if(error){
+					console.log("error");
+					res.write(JSON.stringify(error));
+					res.end();
+				}else{
+				
+								
+					mysql.pool.query("SELECT `Avatar`,`FirstName`,`UserID` FROM User WHERE UserID=?",[req.params.id],function(err, rows, fields){
+			
+					if(err){
+
+					console.log(err);
+						return;
+					}else if(rows.length > 0){
+			
+						context.user = rows
+			
+						mysql.pool.query("SELECT `QuestText` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NULL",[req.params.id],function(err, rows, fields){
+
+						if(err){
+
+							console.log(err);
+							return;
+						}
+					
+						context.MultSelect = rows;
+					
+						mysql.pool.query("SELECT `QuestText`, `QuestAnswer` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NOT NULL",[req.params.id],function(err, rows, fields){
+
+						if(err){
+							//next(err);
+							console.log(err);
+							return;
+						}
+					
+							context.LongAnswer = rows;
+
+							res.render('profile',context);
+						});
+					
+						});
+			
+						}else{
+				
+							res.render('loginerror',context);
+	
+						}});}})}})}})}})});
+
 
 //Page rendering for errors returned from the server.
 app.use(function(req,res){
