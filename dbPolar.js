@@ -325,7 +325,12 @@ app.post('/:id', function(req,res) {
 				
 							res.render('loginerror',context);
 	
-						}});}})}})}})}})});
+						}});
+				}})
+			}})
+		}})
+	}})
+});
 
 
 //Page rendering for errors returned from the server.
