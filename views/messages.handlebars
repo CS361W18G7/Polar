@@ -1,0 +1,22 @@
+<div class="outer-container">
+
+	<div class="inner-container">
+	
+		<h1>Messages</h1>
+	
+		{{#each message}}
+	
+			<div class="messageBubble">
+			
+			<h3>From {{this.Sender}}</h3>
+			<div id="Messages">{{this.MsgText}}</div>
+			<a href="/profile/{{this.User2}}">Visit {{this.Sender}}'s Profile</a>
+			
+			</div>
+				
+		
+		{{/each}}
+		
+	</div>
+	
+</div>
