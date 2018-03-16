@@ -4,10 +4,11 @@
 	
 		{{#each user}}
 	
-			<div class="myHeader">
+			<div align="center">
+			
 				<img id="AvatarImg" src="/img/{{this.Avatar}}.png">
 					
-				<div id="ProfileName"><h1 id="myName">{{this.FirstName}}</h1></div>
+				<div id="ProfileName"><h2 id="myName">{{this.FirstName}}</h2></div>
 			
 			</div>
 			
@@ -39,14 +40,17 @@
 		
 		{{#each LongAnswer}}
 		
-			<h2>{{this.QuestText}}</h2>
+			<div id="QuestionBox"><h3 class="question">{{this.QuestText}}</h3></div>
 			
 			<div class="AnsText">
 			
 				{{this.QuestAnswer}}
 			
 			</div>
-		
+		{{else}}
+		{{#each user}}
+			<div id="NoQuestion">{{this.FirstName}} hasn't answered any questions yet!</div>
+		{{/each}}
 		{{/each}}
 		
 	</div>

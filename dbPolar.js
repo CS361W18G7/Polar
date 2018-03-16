@@ -332,18 +332,26 @@ app.get('/messages/:id', function(req,res,next) {
 
 	var context = {};
 	
-	mysql.pool.query('SELECT `MsgText`, `User2`, UU.FirstName as `Sender` FROM Messages as M INNER JOIN User as U ON M.User1=U.UserID INNER JOIN User as UU ON M.User2=UU.UserID WHERE U.UserID=?', [req.params.id] ,function(err, rows, fields){
+	mysql.pool.query('SELECT `MsgText`, `User2`, UU.FirstName as `Sender` FROM Messages as M INNER JOIN User as U ON M.User1=U.UserID INNER JOIN User as UU ON M.User2=UU.UserID WHERE U.UserID=? AND M.Status="Received"', [req.params.id] ,function(err, rows, fields){
 		if(err){
 			console.log(err);
 			return;
 		}
-		context.message = rows;
+		context.received = rows;
+							
+		mysql.pool.query('SELECT `MsgText`, `User2`, UU.FirstName as `Recipient` FROM Messages as M INNER JOIN User as U ON M.User1=U.UserID INNER JOIN User as UU ON M.User2=UU.UserID WHERE U.UserID=? AND M.Status="Sent"', [req.params.id] ,function(err, rows, fields){
+		if(err){
+			console.log(err);
+			return;
+		}
+		context.sent = rows;
 							
 		res.render('messages',context);
 		});
+		});
 });
 
-// Renders the view messages screen
+// Renders the view user screen
 app.get('/profile/:id', function(req,res,next) {
 
 	var context = {};
@@ -384,7 +392,7 @@ app.get('/profile/:id', function(req,res,next) {
 		});
 });
 
-// Renders the view messages screen
+// Renders the browse matches screen
 app.get('/Browse/:id', function(req,res,next) {
 
 	var context = {};

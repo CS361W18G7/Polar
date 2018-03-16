@@ -3,18 +3,35 @@
 	<div class="inner-container">
 	
 		<h1>Messages</h1>
+		
+		<div id="msg">Received:</div>
 	
-		{{#each message}}
+		{{#each received}}
 	
 			<div class="messageBubble">
 			
-			<h3>From {{this.Sender}}</h3>
+			<h3 class="unbuffed">From {{this.Sender}}</h3>
 			<div id="Messages">{{this.MsgText}}</div>
-			<a href="/profile/{{this.User2}}">Visit {{this.Sender}}'s Profile</a>
-			
+			<p><form action="/profile/{{this.User2}}"><input type="submit" value="Visit {{this.Sender}}'s Profile" /></form></p>
 			</div>
 				
+		{{else}}
+			<c><i>You haven't received any messages.</i></c>
+		{{/each}}
 		
+		<div id="msg">Sent:</div>
+	
+		{{#each sent}}
+	
+			<div class="messageBubble">
+			
+			<h3 class="unbuffed">To {{this.Recipient}}</h3>
+			<div id="Messages">{{this.MsgText}}</div>
+			<p><form action="/profile/{{this.User2}}"><input type="submit" value="Visit {{this.Recipient}}'s Profile" /></form></p>
+			</div>
+				
+		{{else}}
+			<c><i>You haven't sent any messages.</i></c>
 		{{/each}}
 		
 	</div>
