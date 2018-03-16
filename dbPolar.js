@@ -332,6 +332,62 @@ app.post('/:id', function(req,res) {
 	}})
 });
 
+// Renders the view messages screen
+app.get('/messages/:id', function(req,res,next) {
+
+	var context = {};
+	
+	mysql.pool.query('SELECT `MsgText`, `User2`, UU.FirstName as `Sender` FROM Messages as M INNER JOIN User as U ON M.User1=U.UserID INNER JOIN User as UU ON M.User2=UU.UserID WHERE U.UserID=?', [req.params.id] ,function(err, rows, fields){
+		if(err){
+			console.log(err);
+			return;
+		}
+		context.message = rows;
+							
+		res.render('messages',context);
+		});
+});
+
+// Renders the view messages screen
+app.get('/profile/:id', function(req,res,next) {
+
+	var context = {};
+	
+		mysql.pool.query("SELECT `Avatar`,`FirstName`,`UserID` FROM User WHERE UserID=?",[req.params.id],function(err, rows, fields){
+			
+		if(err){
+
+		console.log(err);
+			return;
+		}else if(rows.length > 0){
+			
+			context.user = rows
+			
+			mysql.pool.query("SELECT `QuestText` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NULL",[req.params.id],function(err, rows, fields){
+
+			if(err){
+
+				console.log(err);
+				return;
+			}
+					
+			context.MultSelect = rows;
+					
+			mysql.pool.query("SELECT `QuestText`, `QuestAnswer` FROM Questions as Q INNER JOIN UserProfile as UP ON UP.QuestID=Q.QuestID WHERE UP.UserID=(Select UserID From User Where UserID=?) AND UP.QuestAnswer IS NOT NULL",[req.params.id],function(err, rows, fields){
+
+			if(err){
+				console.log(err);
+				return;
+			}
+					
+				context.LongAnswer = rows;
+
+				res.render('userProfile',context);
+			});
+			});
+		}
+		});
+});
 
 //Page rendering for errors returned from the server.
 app.use(function(req,res){
