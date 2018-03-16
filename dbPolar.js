@@ -384,6 +384,24 @@ app.get('/profile/:id', function(req,res,next) {
 		});
 });
 
+// Renders the view messages screen
+app.get('/Browse/:id', function(req,res,next) {
+
+	var context = {};
+	
+		mysql.pool.query("SELECT U.Avatar, U.FirstName, U.UserID FROM User U INNER JOIN (select DISTINCT(MP.UserID) from UserProfile CP INNER JOIN UserProfile MP on CP.QuestID = MP.QuestID where CP.QuestAnswer IS NULL AND MP.UserID <> CP.UserID AND CP.UserID = ? limit 3) as UP on UP.UserID = U.UserID",[req.params.id],function(err, rows, fields){
+			
+		if(err){
+			console.log(err);
+			return;
+		}else if(rows.length > 0){
+			
+			context.user = rows
+			
+			res.render('browse',context);
+			}
+		});
+});
 //Page rendering for errors returned from the server.
 app.use(function(req,res){
   res.status(404);

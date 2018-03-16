@@ -5,16 +5,18 @@
 		{{#each user}}
 	
 			<div class="myHeader">
-				<a href="/{{this.UserID}}">Edit Profile</a>
-				
-				<a href="/messages/{{this.UserID}}">View Messages</a>
-				
-				<img id="AvatarImg" src="img/{{this.Avatar}}.png">
-					
-				<div id="ProfileName"><h1 id="myName">{{this.FirstName}}</h1></div>
-			
+				<table>
+					<tr>
+						<th><a href="/{{this.UserID}}">Edit Profile</a></th>
+						<th><a href="/messages/{{this.UserID}}">View Messages</a></th>
+						<th><a href="/browse/{{this.UserID}}">View Matches</a></th>
+					</tr>
+				</table>	
 			</div>
-			
+			<div align="center">
+				<img id="AvatarImg" src="img/{{this.Avatar}}.png">					
+				<div id="ProfileName"><h2 id="myName">{{this.FirstName}}</h2></div>
+			</div>
 			<h2>You care about...</h2>
 			
 			<hr>
@@ -43,7 +45,7 @@
 		
 		{{#each LongAnswer}}
 		
-			<h2>{{this.QuestText}}</h2>
+			<h3>{{this.QuestText}}</h3>
 			
 			<div class="AnsText">
 			
