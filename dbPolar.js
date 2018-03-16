@@ -325,12 +325,7 @@ app.post('/:id', function(req,res) {
 				
 							res.render('loginerror',context);
 	
-						}});
-				}})
-			}})
-		}})
-	}})
-});
+						}});}})}})}})}})});
 
 // Renders the view messages screen
 app.get('/messages/:id', function(req,res,next) {
