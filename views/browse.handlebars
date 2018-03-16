@@ -2,15 +2,24 @@
 
 	<div Class="inner-container">
 	
-        <h1 id="Welcome">Current Match</h1>
+        <h1>Matches</h1>
+		
 		<table>
+		
 		{{#each user}}
+		
 			<tr>
+			
 				<td>
-					<img id="AvatarImg" src="/img/{{this.Avatar}}Icon.png">
-					<a href="/profile/{{this.UserID}}"><div id="ProfileName"><h3>Visit {{this.FirstName}}'s Profile</h3></div></a>
+				
+					<a href="/profile/{{this.UserID}}"><img id="AvatarImg" src="/img/{{this.Avatar}}Icon.png"></a>
+					
+					<a href="/profile/{{this.UserID}}"><div id="ProfileName"><h3 class="removedTop">Visit {{this.FirstName}}'s Profile</h3></div></a>
+				
 				</td>
-			</tr>		
+				
+			</tr>	
+			
 		{{/each}}
 		
 		</table>

@@ -86,8 +86,33 @@ tr{
 	
 	text-align: center;
 	color: #5A5050;
-	size: 30px;
+	size: 26px;
 	
+}
+
+#Messages{
+	
+	text-align: left;
+	
+}
+
+#NoQuestion{
+	
+	text-align: center;
+	font-style: italic;
+	font-size: 14pt;
+	padding-top: 200px;
+	
+}
+
+a{
+	
+	color:#262626;
+	text-decoration: none;
+}
+
+i{
+	color: #262626;
 }
 
 .Numero{
@@ -104,15 +129,6 @@ input.MyButton{
 	
 }
 
-h1#Welcome{
-	
-	text-align:center;
-	font-family: calibri;
-	font-size: 36pt;
-	color:#5A5050;
-	
-}
-
 div.outer-container{
 	
 	width:90%;
@@ -121,6 +137,7 @@ div.outer-container{
 	padding-top:15px;
 	padding-bottom:15px;
 	text-align:middle;
+	font-family: "Palatino";
 	
 }
 
@@ -135,14 +152,49 @@ div.inner-container{
 	border-color:#b4c7e7;
 	text-align:center;
 	width:375px;
-	height:667px;
+	height:680px;
 	
 }
 
-h3{
+#QuestionBox{
 	
 	background-color: #b4c7e7;
-	color:white;
+	
+}
+
+
+h3{
+	
+	color:#262626;
+	padding-bottom:5px;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	
+}
+
+h3.removedTop{
+	
+	margin-top: 10px;
+	
+}
+
+h3.question{
+	
+	text-align:center;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "Palatino";
+	padding: 10px;
+	font-size: 14pt;
+	font-weight: 600;
+	
+}
+
+h3.unbuffed{
+
+	padding: 0px;
+	margin: 0;
 	
 }
 
@@ -154,12 +206,17 @@ h3.footer{
 
 h4{
 	
-	margin:0;
+	margin: 0;
 	padding-bottom:5pt;
 	text-align:center;
-	font-family: calibri;
 	font-size: 16pt;
-	color:#5A5050;
+	color:#262626;
+	
+}
+
+h3#ReducedBottom{
+	
+	margin-bottom: 0;
 	
 }
 
@@ -219,16 +276,51 @@ input.LoginSubmit{
 }
 
 h2{
-	
+	font-family: Garamond;
 	text-align:center;
-	font-family: calibri;
 	font-size: 22pt;
+	color: #262626;
+	margin-top: 5px;
+	
+}
+
+h2#myName{
+
+	text-align:center;
+	font-size: 42pt;
+	color:#002080;
+	margin-bottom: 10px;
+	
+}
+
+#msg{
+	
+	font-weight: bold;
+	text-align:left;
+	font-size: 18pt;
+	color: #262626;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	
+}
+
+input[type=submit] {
+    
+	width: 50%;
+	height: 30px;
+	padding:5px 12px; 
+    background:#b4c7e7; 
+    border: 1px solid #262626;
+    cursor:pointer;
+	font-weight: bold;
+	margin-top: 10px;
 	
 }
 
 div.ParentDiv{
 	
 	text-align:center;
+	color:black;
 
 }
 
@@ -238,6 +330,7 @@ div.ChildDiv{
 	display:inline-block;
 	padding-right: 2pt;
 	height:100%;
+	
 }
 
 div.myHeader{
@@ -260,26 +353,31 @@ div#ProfileName{
 	
 }
 
-h1#myName{
+h1{
 
-	text-align:center;
-	font-family: calibri;
-	font-size: 42pt;
-	color:#5A5050;
+	color: #002080;
+	font-size: 30pt;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-family: Garamond;
 	
 }
 
 div.AnsText{
 
 	display:inline-block;
-	width: 98%;
+	width: 96%;
 	height: 70px;
 	border-style:solid;
 	border-width:2px;
 	border-radius:10px;
 	border-color:#b4c7e7;
 	text-align:center;
-	padding-bottom:2px;
+	padding-bottom:5px;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	color:#262626;
 	
 }
 
@@ -292,7 +390,6 @@ div#FooterDiv{
 p#registerlink{
 
 	text-align:center;
-	font-family: calibri;
 	font-size: 12pt;
 	color:#5A5050;
 	
